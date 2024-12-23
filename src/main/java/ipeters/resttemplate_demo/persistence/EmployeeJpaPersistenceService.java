@@ -12,16 +12,22 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class EmployeeJpaPersistenceService implements EmployeePersistenceFacade {
-    @Autowired
-    EmployeeJpaDaoMapper employeeJpaDaoMapper;
-    @Autowired
-      EmployeeJpaRepository employeeJpaRepository;
+//    @Autowired
+    private final EmployeeJpaDaoMapper employeeJpaDaoMapper;
+    private final   EmployeeJpaRepository employeeJpaRepository;
 
+    public EmployeeJpaPersistenceService(EmployeeJpaDaoMapper employeeJpaDaoMapper, EmployeeJpaRepository employeeJpaRepository) {
+        this.employeeJpaDaoMapper = employeeJpaDaoMapper;
+        this.employeeJpaRepository = employeeJpaRepository;
+    }
 
 
     @Override
     public Employee save(Employee employee) {
-        final EmployeeJpaEntity employeeJpaEntity = this.employeeJpaRepository.save(employeeJpaDaoMapper.modelToJpaEntity(employee));
+        log.debug("Employee  = {}", employee.getName());
+        EmployeeJpaEntity InterEmployeeJpaEntity = employeeJpaDaoMapper.modelToJpaEntity(employee);
+        log.debug("Employee JPA = {}", InterEmployeeJpaEntity.getName());
+        EmployeeJpaEntity employeeJpaEntity = this.employeeJpaRepository.save(InterEmployeeJpaEntity);
         log.debug("Employee JPA = {}", employeeJpaEntity.getName());
         return this.employeeJpaDaoMapper.jpaEntityToModel(employeeJpaEntity);
     }
@@ -61,9 +67,9 @@ public class EmployeeJpaPersistenceService implements EmployeePersistenceFacade 
 
         return this.employeeJpaDaoMapper.jpaEntityToModel(this.employeeJpaRepository.save(this.employeeJpaDaoMapper.modelToJpaEntity(employee)));
     }
-
-    @Override
-    public Employee findByEmployeeId(long theId) {
-        return this.employeeJpaDaoMapper.jpaEntityToModel(this.employeeJpaRepository.findByEmployeeId(theId));
-    }
+//
+//    @Override
+//    public Employee findByEmployeeId(long theId) {
+//        return this.employeeJpaDaoMapper.jpaEntityToModel(this.employeeJpaRepository.findByEmployeeId(theId));
+//    }
 }

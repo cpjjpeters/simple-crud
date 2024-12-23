@@ -1,6 +1,8 @@
 package ipeters.resttemplate_demo.configuration;
 
+import org.mapstruct.factory.Mappers;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -11,4 +13,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan("ipeters.resttemplate_demo.*;")
 @EnableJpaRepositories(basePackages = "ipeters.resttemplate_demo")
 public class ApplicationConfig {
+//    @Bean
+//    public CustomerMapper customerMapper() {
+//        return Mappers.getMapper(CustomerMapper.class);
+//    }
 }

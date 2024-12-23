@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 //@Data
 public class Employee {
 
-    private String id;
+    private Long id;
     private String name;
     private String address;
 
-    public Employee(String id, String name, String address) {
+    public Employee(Long id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -24,11 +24,11 @@ public class Employee {
     public Employee() {
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
