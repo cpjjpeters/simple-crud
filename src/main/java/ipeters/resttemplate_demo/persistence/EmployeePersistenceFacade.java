@@ -17,5 +17,7 @@ public interface EmployeePersistenceFacade {
 
         Employee update(Employee employee);
 
+        Employee getEmployeeById(Long id);
+
 //        Employee findByEmployeeId(long theId);
 }

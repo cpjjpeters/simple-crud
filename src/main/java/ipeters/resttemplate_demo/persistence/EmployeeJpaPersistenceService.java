@@ -67,6 +67,11 @@ public class EmployeeJpaPersistenceService implements EmployeePersistenceFacade 
 
         return this.employeeJpaDaoMapper.jpaEntityToModel(this.employeeJpaRepository.save(this.employeeJpaDaoMapper.modelToJpaEntity(employee)));
     }
+
+    @Override
+    public Employee getEmployeeById(Long id) {
+        return this.employeeJpaDaoMapper.jpaEntityToModel(this.employeeJpaRepository.getOne(id));
+    }
 //
 //    @Override
 //    public Employee findByEmployeeId(long theId) {

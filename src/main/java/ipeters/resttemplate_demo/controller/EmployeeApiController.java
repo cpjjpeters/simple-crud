@@ -61,18 +61,18 @@ public class EmployeeApiController {
         return employeeService.save(employee);
 //        return ResponseEntity.ok().body(employeeService.save(employee));
     }
-//
-//    @PutMapping(value = "/update/{id}")
-//    public ResponseEntity<Employee> update(@PathVariable("id") Long id, @RequestBody Employee updateEmployee) {
-//        log.debug("update");
-//        Employee employee = employeeService.findById(id);
-//        employee.setId(updateEmployee.getId());
-//        employee.setName(updateEmployee.getName());
-//        employee.setPopulation(updateEmployee.getPopulation());
-//        final Employee updatedEmployee =  employeeService.update(employee);
-//        return ResponseEntity.ok().body(updatedEmployee);
-//    }
-//
+
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<Employee> update(@PathVariable("id") Long id, @RequestBody Employee updateEmployee) {
+        log.debug("update");
+        Employee employee = employeeService.fintById(id);
+        employee.setId(updateEmployee.getId());
+        employee.setName(updateEmployee.getName());
+        employee.setAddress(updateEmployee.getAddress());
+        final Employee updatedEmployee =  employeeService.update(employee);
+        return ResponseEntity.ok().body(updatedEmployee);
+    }
+
 //    @DeleteMapping(value = "/delete/{id}")
 //    public Map<String, Boolean> deleteById(@PathVariable("id") Long id) {
 //
@@ -84,11 +84,11 @@ public class EmployeeApiController {
 //        response.put("deleted", Boolean.TRUE);
 //        return response;
 //    }
-//
-//    @DeleteMapping({"{id}"})
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    public void deleteEmployee(@PathVariable("id") Long id){
-//        log.debug("delete with just an id: {}", id);
-//        employeeService.deleteById(id);
-//    }
+
+    @DeleteMapping({"{id}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteEmployee(@PathVariable("id") Long id){
+        log.debug("delete with just an id: {}", id);
+        employeeService.deleteById(id);
+    }
 }

@@ -31,4 +31,19 @@ public class EmployeeService {
         log.debug("findById");
         return this.employeePersistenceFacade.findById(id);
     }
-}
+
+    public Employee fintById(Long id) {
+        log.debug("findById");
+        return this.employeePersistenceFacade.getEmployeeById(id);
+    }
+    public void deleteById(Long id) {
+        log.debug("deleteById");
+        this.employeePersistenceFacade.deleteById(id);
+    }
+
+
+    public Employee update(Employee employee) {
+        log.debug("update");
+        return this.employeePersistenceFacade.update(employee);
+    }
+    }
